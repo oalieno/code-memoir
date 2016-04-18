@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <conio.h>
 #define PACE 15
-//¤W 0 ¤U 1 ¥ª 2 ¥k 3
-//¤ô 0 ¤õ 1 ¤ì 2 ¥ú 3 ·t 4 ¤ß 5
+//ä¸Š 0 ä¸‹ 1 å·¦ 2 å³ 3
+//æ°´ 0 ç« 1 æœ¨ 2 å…‰ 3 æš— 4 å¿ƒ 5
 void in();
 void out();
 void slip(int,int,int);
@@ -35,10 +35,10 @@ int main(int argc, char *argv[])
   int i,j;
   char action;  
   color[6]=1;
-  printf("=============== »¡©ú®Ñ ===============\n\n");
-  printf("®y¼Ğx¬°ª½ªº\n®y¼Ğy¬°¾îªº\n\n");
-  printf("Äİ©ÊÂà¼Æ¦rªí¦p¤U:\n¤ô 0 ¤õ 1 ¤ì 2 ¥ú 3 ·t 4 ¤ß 5");
-  printf("\n\n(«ö¥ô·NÁäÄ~Äò)");
+  printf("=============== èªªæ˜æ›¸ ===============\n\n");
+  printf("åº§æ¨™xç‚ºç›´çš„\nåº§æ¨™yç‚ºæ©«çš„\n\n");
+  printf("å±¬æ€§è½‰æ•¸å­—è¡¨å¦‚ä¸‹:\næ°´ 0 ç« 1 æœ¨ 2 å…‰ 3 æš— 4 å¿ƒ 5");
+  printf("\n\n(æŒ‰ä»»æ„éµç¹¼çºŒ)");
   action=getch();
   system("cls");
   while(1){
@@ -58,19 +58,19 @@ int main(int argc, char *argv[])
 }
 void in(void){
   int i,j;
-  printf("½Ğ¿é¤J¯]¯]¹Ï:\n");
+  printf("è«‹è¼¸å…¥ç ç åœ–:\n");
   for(i=0;i<5;i++){
     for(j=0;j<6;j++){
       scanf("%d",&map[i][j]);      
     }      
   }
-  printf("³Ì¦h­n´Xcombo?");
+  printf("æœ€å¤šè¦å¹¾combo?");
   scanf("%d",&study);     
-  printf("¦³´XÁû­·¤Æ¯]?(¨S¦³½Ğ¿é¤J0)");
+  printf("æœ‰å¹¾é¡†é¢¨åŒ–ç ?(æ²’æœ‰è«‹è¼¸å…¥0)");
   scanf("%d",&block_len); 
   if(block_len > 0 && block_len <= 10){
     for(i=0;i<block_len;i++){
-      printf("²Ä%d²Õ­·¤Æ¯](x,y):",i+1); 
+      printf("ç¬¬%dçµ„é¢¨åŒ–ç (x,y):",i+1); 
       scanf("%d %d",&block_x[i],&block_y[i]);
       block_x[i]--;
       block_y[i]--;      
@@ -87,30 +87,30 @@ void in(void){
   for(i=0;i<block_len;i++){
     block[block_x[i]][block_y[i]]=1;      
   } 
-  printf("§A¦³¤@©w­n®øÔ£¶Ü?(¨S¦³½Ğ¿é6)");
+  printf("ä½ æœ‰ä¸€å®šè¦æ¶ˆå•¥å—?(æ²’æœ‰è«‹è¼¸6)");
   scanf("%d",&limit); 
 }
 void out(void){
   int i,j;
-  printf("combo³Ì°ª:%d\n",max);
-  printf("°_¤â¯]:%d %d",hand_x,hand_y);
-  printf("¸ô®|¦p¤U:");
+  printf("comboæœ€é«˜:%d\n",max);
+  printf("èµ·æ‰‹ç :%d %d",hand_x,hand_y);
+  printf("è·¯å¾‘å¦‚ä¸‹:");
   for(i=0;i<act;i++){
     if(best_pace[i] == 0){
-      printf("¤W");     
+      printf("ä¸Š");     
     }
     if(best_pace[i] == 1){
-      printf("¤U");     
+      printf("ä¸‹");     
     }
     if(best_pace[i] == 2){
-      printf("¥ª");     
+      printf("å·¦");     
     }
     if(best_pace[i] == 3){
-      printf("¥k");     
+      printf("å³");     
     }      
   }
   printf("\n");
-  printf("§¹¦¨¹Ï:\n");
+  printf("å®Œæˆåœ–:\n");
   for(i=0;i<5;i++){
     for(j=0;j<6;j++){
       printf("%d ",best_map[i][j]);      
@@ -118,12 +118,12 @@ void out(void){
     printf("\n");      
   }
   printf("\n");
-  printf("¤ôÄİ©Ê®ø¤F%dcombo\n",best_color[0]);
-  printf("¤õÄİ©Ê®ø¤F%dcombo\n",best_color[1]);
-  printf("¤ìÄİ©Ê®ø¤F%dcombo\n",best_color[2]);
-  printf("¥úÄİ©Ê®ø¤F%dcombo\n",best_color[3]);
-  printf("·tÄİ©Ê®ø¤F%dcombo\n",best_color[4]);
-  printf("¤ßÄİ©Ê®ø¤F%dcombo\n",best_color[5]);  
+  printf("æ°´å±¬æ€§æ¶ˆäº†%dcombo\n",best_color[0]);
+  printf("ç«å±¬æ€§æ¶ˆäº†%dcombo\n",best_color[1]);
+  printf("æœ¨å±¬æ€§æ¶ˆäº†%dcombo\n",best_color[2]);
+  printf("å…‰å±¬æ€§æ¶ˆäº†%dcombo\n",best_color[3]);
+  printf("æš—å±¬æ€§æ¶ˆäº†%dcombo\n",best_color[4]);
+  printf("å¿ƒå±¬æ€§æ¶ˆäº†%dcombo\n",best_color[5]);  
   printf("\n");  
 }
 void slip(int x,int y,int move){
